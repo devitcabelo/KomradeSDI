@@ -1,0 +1,23 @@
+<form *ngIf="produtoForm" [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+
+  <input type="hidden" formControlName="id">
+  <label>
+    Nome:
+    <input type="text" formControlName="nome">
+  </label>
+
+  <label>
+    Descrição:
+    <input type="text" formControlName="descricao">
+  </label>
+
+  <label>
+    Valor:
+    <input type="text" formControlName="valor">
+  </label>
+
+  <button type="submit">Enviar</button>
+  
+</form>
+
+<a routerLink="/produtos">Voltar</a>

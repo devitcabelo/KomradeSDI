@@ -1,0 +1,12 @@
+Produtos
+<table>
+  <tr *ngFor="let produto of produtos">
+    {{produto.nome}}
+    <a routerLink="/produtos/{{produto.id}}">Alugar</a>
+    <span *ngIf="currentUsuario('gestor')" >
+      <a routerLink="/produtos/{{produto.id}}">Editar</a>
+      <a routerLink="/produtos/{{produto.id}}">Deletar</a>
+    </span>
+  </tr>
+</table>
+<a routerLink="/produtos/new"> Novo Produto </a>

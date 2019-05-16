@@ -5,16 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ProdutoComponent } from './produto/produto.component';
-import { ProdutoShowComponent } from './produto/produto-show/produto-show.component';
-import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
+import { ProdutoShowComponent } from './produto/show/produto-show.component';
+import { ProdutoFormComponent } from './produto/form/produto-form.component';
 
 import { UsuarioComponent } from './usuario/usuario.component';
-import { UsuarioShowComponent } from './usuario/usuario-show/usuario-show.component';
-import { UsuarioFormComponent } from './usuario/usuario-form/usuario-form.component';
+import { UsuarioShowComponent } from './usuario/show/usuario-show.component';
+import { UsuarioFormComponent } from './usuario/form/usuario-form.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs/internal/Observable';
-import { HttpModule } from '@angular/http/';
+import { LoginComponent } from './usuario/login/login.component';
 
 const appRoutes: Routes = [
   { 
@@ -30,7 +29,9 @@ const appRoutes: Routes = [
   { path: 'usuarios', component: UsuarioComponent },
   { path: 'usuario/:id', component: UsuarioShowComponent },
   { path: 'usuarios/new', component: UsuarioFormComponent },
-  { path: 'usuarios/edit/:id', component: UsuarioFormComponent }
+  { path: 'usuarios/edit/:id', component: UsuarioFormComponent },
+
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     ProdutoFormComponent,
     UsuarioComponent,
     UsuarioShowComponent,
-    UsuarioFormComponent
+    UsuarioFormComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(

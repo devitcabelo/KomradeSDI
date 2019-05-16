@@ -1,0 +1,20 @@
+<form *ngIf="usuarioForm" [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    Email:
+      <input matInput type="text" formControlName="email">
+
+  </label>
+
+  <label>
+    Senha:
+
+      <input matInput type="text" formControlName="senha">
+
+  </label>
+
+  <button type="submit">Logar</button>
+  
+</form>
+
+<a routerLink="/usuarios/new">Novo cadastro</a>

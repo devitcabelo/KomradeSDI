@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/usuario/usuario.component';
 import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario-form',
@@ -22,13 +21,28 @@ export class UsuarioFormComponent implements OnInit {
         id: [''],
         nome: [''],
         email: [''],
+        senha: [''],
+        endereco: this.fb.group({
+          cep: [''],
+          rua: [''],
+          complemento: [''],
+          cidade: [''],
+          estado: [''],
+        })
       });
       if(params.get("id")){
-        this.usuario = new Usuario(1, "cabelo", "umeailqualquer@gmail.com","2");
+        this.usuario = new Usuario(1, "cabelo", "umeailqualquer@gmail.com", "gestor", "31260-330", "Alvaro Martins", "Apto 303", "Belo Horizonte", "Minas Gerais");
         this.usuarioForm.patchValue({
           id: this.usuario.id,
           nome: this.usuario.nome,
-          email: this.usuario.email
+          email: this.usuario.email,
+          endereco: {
+            cep: this.usuario.endereco.cep,
+            rua: this.usuario.endereco.rua,
+            complemento: this.usuario.endereco.complemento,
+            cidade: this.usuario.endereco.cidade,
+            estado: this.usuario.endereco.estado
+          }
         });
       }
     });

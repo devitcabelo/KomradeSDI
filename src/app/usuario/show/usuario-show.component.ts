@@ -11,7 +11,7 @@ export class UsuarioShowComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.usuario = new Usuario(1, "lucas", "umeailqualquer@gmail.com", "gestor");
+    this.usuario = new Usuario(1, "lucas", "umeailqualquer@gmail.com", "gestor", "31260-330", "Alvaro Martins", "Apto 303", "Belo Horizonte", "Minas Gerais");
   }
 
 }

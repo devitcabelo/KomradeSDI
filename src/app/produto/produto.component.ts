@@ -3,6 +3,7 @@ import { Data } from '@angular/router/src/config';
 import { ProdutoService } from 'src/app/produto/produto-service';
 import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common/src/pipes/date_pipe';
+import { Usuario } from '../usuario/usuario.component';
 
 @Component({
   selector: 'app-produto',
@@ -11,6 +12,7 @@ import { DatePipe } from '@angular/common/src/pipes/date_pipe';
   providers:[ProdutoService]
 })
 export class ProdutoComponent implements OnInit {
+  currentUsuario = Usuario.currentUsuario;
   produtos: Produto[] = [];
   subsProdutos: Subscription;  
   constructor(private service: ProdutoService) { }

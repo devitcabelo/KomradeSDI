@@ -8,19 +8,7 @@ import { Usuario } from './usuario/usuario.component';
 })
 export class AppComponent {
   title = 'Komrade';
-  usuario: Usuario;
+  
+  ngOnInit(){}
 
-  ngOnInit(){
-    this.usuario;
-    localStorage.usuario_nome = this.usuario.nome;
-    localStorage.usuario_tipo = this.usuario.tipo;
-  }
-
-  currentUsuario(tipo){
-    if(tipo === null){
-      localStorage.usuario_nome; 
-    }else{
-      localStorage.usuario_tipo === tipo; 
-    }
-  }
 }

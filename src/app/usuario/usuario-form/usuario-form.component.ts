@@ -24,7 +24,7 @@ export class UsuarioFormComponent implements OnInit {
         email: [''],
       });
       if(params.get("id")){
-        this.usuario = new Usuario(1, "cabelo", "umeailqualquer@gmail.com");
+        this.usuario = new Usuario(1, "cabelo", "umeailqualquer@gmail.com","2");
         this.usuarioForm.patchValue({
           id: this.usuario.id,
           nome: this.usuario.nome,

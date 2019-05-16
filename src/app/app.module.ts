@@ -13,6 +13,8 @@ import { UsuarioShowComponent } from './usuario/usuario-show/usuario-show.compon
 import { UsuarioFormComponent } from './usuario/usuario-form/usuario-form.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+import { HttpModule } from '@angular/http/';
 
 const appRoutes: Routes = [
   { 
@@ -48,9 +50,10 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [HttpModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

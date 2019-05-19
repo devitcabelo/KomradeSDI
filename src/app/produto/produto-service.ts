@@ -18,18 +18,15 @@ export class ProdutoService {
         return this.http.get(this.productsUrl);
     }
     getProductsbyId(id) : Observable<Response>{
-        let options = new RequestOptions({ params: {'id': id}});
-        return this.http.get(this.productsUrl, options);
+        return this.http.get(this.productsUrl + id);
     }
 
-    addProduct(produto: Produto) {     
-        console.log(produto)               
+    addProduct(produto: Produto) {            
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
         this.http.post(this.productsUrl, produto, options).subscribe((resposta) =>{
             alert(resposta.json().resposta);
-            console.log(resposta);
         })
     }
 
@@ -44,14 +41,12 @@ export class ProdutoService {
     }
 
     
-    updateProduct(produto: Produto, id) {     
-        console.log(produto)               
+    updateProduct(produto: Produto, id) {              
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers});
 
         this.http.put(this.productsUrl + id, produto, options).subscribe((resposta) =>{
             alert(resposta.json().resposta);
-            console.log(resposta);
         })
     }
 

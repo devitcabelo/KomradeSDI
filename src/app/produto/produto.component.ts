@@ -3,7 +3,6 @@ import { Data } from '@angular/router/src/config';
 import { ProdutoService } from 'src/app/produto/produto-service';
 import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common/src/pipes/date_pipe';
-import { Usuario } from '../usuario/usuario.component';
 
 @Component({
   selector: 'app-produto',
@@ -12,25 +11,56 @@ import { Usuario } from '../usuario/usuario.component';
   providers:[ProdutoService]
 })
 export class ProdutoComponent implements OnInit {
-  currentUsuario = Usuario.currentUsuario;
   produtos: Produto[] = [];
   subsProdutos: Subscription;  
   constructor(private service: ProdutoService) { }
+  isUserAdmin: boolean = false;
+  isUserLogged: boolean = false;
+  nome: string;
 
   ngOnInit() {
+    this.isAdmin();
+    this.isLogged();
     this.subsProdutos = this.service.getProducts().subscribe(
       resposta => {
       this.produtos = resposta.json()
       this.service.produtos = this.produtos.slice();
-      console.log(this.service.produtos)
       }
     )
   }
   deletar(id){
-    console.log(id);
     this.service.deleteProduct(id);
   }
+  isAdmin(){
+    if(localStorage.usuario_tipo == 'admin'){
+      this.isUserAdmin = true;
+    }
+    else{
+      this.isUserAdmin = false;
+    }
+  }
+  isLogged(){
+    if(localStorage.usuario_nome !== ''){
+      this.isUserLogged = true;
+      this.nome = localStorage.usuario_nome;
+    }
+    else{
+      this.isUserLogged = false;
+    }
+  }
+  Deslogar(){
+    localStorage.usuario_nome = '';
+    localStorage.usuario_tipo = '';
+    this.isLogged();
+  }
 
+  adicionarAoCarrinho(produto){
+    let carrinho = JSON.parse(localStorage.carrinho);
+    carrinho.produtos.push(produto);
+    carrinho.total += produto.valor;
+    localStorage.carrinho = JSON.stringify(carrinho);
+    alert("O produto " + produto.nome + " foi adicionado com sucesso");
+  }
 }
 
 export class Produto{
@@ -42,7 +72,7 @@ export class Produto{
   genero:string
   estudio:string
   idadeRecomendada:string
-  dataLançamento: DatePipe
+  dataLançamento: Date
   resoluçãoMaxima: string
   tipo:string
 
@@ -59,4 +89,5 @@ export class Produto{
     this.resoluçãoMaxima = resolucao_maxima;
     this.tipo = tipo;
   }
+
 }
